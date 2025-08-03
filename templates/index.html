@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Thumbnails</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Crie sua Thumbnail</h1>
+        <p>Para recortar pessoas e objetos de suas imagens, use <a href="https://pt.clippingmagic.com/" target="_blank">Clipping Magic</a></p>
+        
+        <form id="uploadForm" enctype="multipart/form-data">
+            
+            <div class="form-group">
+                <label for="backgroundImage">Imagem de Fundo</label>
+                <input type="file" id="backgroundImage" name="background" accept="image/*" required>
+                <label for="backgroundImage" class="custom-file-upload">
+                    Escolher Imagem
+                </label>
+                <span id="backgroundFileName" class="file-name">Nenhum arquivo escolhido</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="objectImages">Pessoas/Objetos (até 2)</label>
+                <input type="file" id="objectImages" name="objects" accept="image/*" multiple="true" max="2">
+                <label for="objectImages" class="custom-file-upload">
+                    Escolher Imagens
+                </label>
+                <span id="objectFileNames" class="file-name">Nenhum arquivo escolhido</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="thumbnailText">Texto da Thumbnail</label>
+                <input type="text" id="thumbnailText" name="text" placeholder="Ex: QUE JOGÃO!">
+            </div>
+            
+            <button type="submit">Gerar Thumbnail</button>
+        </form>
+
+        <div id="adContainer" style="display: none;">
+            <h3>Para continuar gerando, assista a este anúncio:</h3>
+            <p>Simulação de anúncio...</p>
+            <button id="closeAdButton">Fechar Anúncio</button>
+        </div>
+        
+        <div class="result-area">
+            <h2>Sua Thumbnail:</h2>
+            <img id="thumbnailImage" src="#" alt="Thumbnail gerada" style="display: none;">
+            <button id="downloadButton" style="display: none;">Baixar Thumbnail</button>
+            <p id="message"></p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
